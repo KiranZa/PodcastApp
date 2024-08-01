@@ -11,10 +11,12 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+
 
     @Provides
     @Singleton
@@ -44,5 +46,11 @@ object NetworkModule {
     @Singleton
     fun providePodcastApi(retrofit: Retrofit): PodcastApi {
         return retrofit.create(PodcastApi::class.java)
+    }
+
+     @Provides
+    @Singleton
+    fun provideFirebaseCrashlytics(): FirebaseCrashlytics {
+        return FirebaseCrashlytics.getInstance()
     }
 }
