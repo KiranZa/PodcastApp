@@ -36,6 +36,6 @@ class PodcastRepositoryTest {
         val result = repository.getTopPodcasts()
 
         // Assert
-        assertEquals(mockPodcasts, result)
+        assertEquals(mockPodcasts, result.results)
     }
 }
