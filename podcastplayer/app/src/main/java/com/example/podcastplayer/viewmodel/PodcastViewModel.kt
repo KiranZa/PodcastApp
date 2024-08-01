@@ -14,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PodcastViewModel @Inject constructor(
-    private val podcastRepository: PodcastRepository
+    private val podcastRepository: PodcastRepository,
+    private val crashlytics: FirebaseCrashlytics
 ) : ViewModel() {
 
     private val _podcasts = MutableStateFlow<List<PodcastResponse>>(emptyList())
@@ -32,7 +33,7 @@ class PodcastViewModel @Inject constructor(
 
             } catch (e: Exception) {
                 // Handling error
-                FirebaseCrashlytics.getInstance().recordException(e)
+               crashlytics.recordException(e)
 
             }
         }
